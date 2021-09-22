@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  padding: 0 10vw;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  background: url(pictures/background.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.logo {
+  margin: 0 auto;
+  width: 30vw;
+  padding: 3vw 0 0;
+  text-align: center;
+}
+
+.logo-img {
+  margin: 0 auto;
+  width: 30vw;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px black;
+}
+
+#can-spend {
+  margin: 1vw auto;
+  border: 3px solid;
+  width: 40vw;
+  height: 5vw;
+  padding: 1vw 0 4vw 1vw;
+  font-size: 2.5vw;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px black;
+}
+
+.main {
+  margin: 0 auto;
+  border: 3px solid;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px black;
+}
+
+.przy-wyd {
+  display: flex;
+  flex-direction: column;
+}
+
+.przychody-head-box {
+  padding: 1vw;
+  font-size: 3vw;
+}
+
+.icon2 {
+  margin: 0 auto;
+}
+
+.icon {
+  padding-left: 1vw;
+}
+
+.przychody-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.przychody-item {
+  padding-left: 0.8vw;
+  padding-bottom: 1vw;
+}
+
+.wydatki-head-box {
+  padding: 1vw;
+  font-size: 3vw;
+}
+
+.wydatki-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wydatki-item {
+  padding-left: 0.5vw;
+  padding-bottom: 1vw;
+}
+
+.produkt {
+  width: 35vw;
+  font-size: 2vw;
+  line-height: 2;
+  border-radius: 5px;
+  background-color: #a7a7a7;
+  color: white;
+}
+
+.kwota {
+  width: 25vw;
+  font-size: 2vw;
+  line-height: 2;
+  border-radius: 5px;
+}
+.submit-button {
+  width: 10vw;
+  font-size: 2vw;
+  line-height: 2;
+}
+
+.przy-obliczenia {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 3px solid;
+}
+
+.wyd-obliczenia {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 3px solid;
+}
+
+#incomes {
+  font-size: 2.5vw;
+  padding-top: 1vw;
+  padding-left: 0.5vw;
+}
+
+.h4-sum {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#expenses {
+  font-size: 2.5vw;
+  padding-top: 1vw;
+  padding-left: 0.5vw;
+}
+
+.li,
+.li2,
+.li4 {
+  list-style-type: none;
+  margin: 3vw;
+  font-size: 3vw;
+}
+
+.edit,
+.edit2,
+.delete,
+.done,
+.done1 {
+  width: 8vw;
+  font-size: 2vw;
+  line-height: 1.5;
+}
+
+.edit,
+.edit2,
+.delete,
+.submit-button,
+.done,
+.done1 {
+  background-color: #a7a7a7;
+  border-radius: 5px;
+  padding: 1%;
+}
+
+@media (min-width: 760px) {
+  .przy-wyd {
+    flex-direction: row;
+  }
+  .przychody {
+    width: 50%;
+  }
+  .wydatki {
+    width: 50%;
+  }
+  .produkt {
+    width: 36vw;
+  }
+  .kwota {
+    width: 25vmin;
+  }
+  .przychody-head-box {
+    border-right: 3px solid;
+  }
+  .przychody-box {
+    border-right: 3px solid;
+    border-bottom: 3px solid;
+  }
+  .wydatki-head-box {
+    border-left: 3px solid;
+  }
+  .wydatki-box {
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+  }
+}
+
+@media (min-width: 960px) {
+  body {
+    width: 100vw;
+    padding: 0 15vw;
+  }
+  .wydatki-head-box {
+    padding: 1vw;
+    font-size: 2vw;
+  }
+  .przychody-head-box {
+    padding: 1vw;
+    font-size: 2vw;
+  }
+  .produkt {
+    width: 250px;
+    font-size: 1.5vw;
+  }
+  .kwota {
+    width: 200px;
+    font-size: 1.5vw;
+  }
+  .submit-button {
+    width: 8vw;
+    font-size: 1.5vw;
+    line-height: 2;
+  }
+  .edit,
+  .edit2,
+  .delete,
+  .submit-button,
+  .done,
+  .done1 {
+    font-size: 1.5vw;
+    line-height: 2;
+  }
+  .edit:hover,
+  .edit2:hover,
+  .delete:hover,
+  .submit-button:hover,
+  .done:hover,
+  .done1:hover {
+    cursor: pointer;
+    animation: bounce 0.2s;
+  }
+  @keyframes bounce {
+    0%,
+    20%,
+    60%,
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    40% {
+      -webkit-transform: translateY(-20px);
+      transform: translateY(-20px);
+    }
+
+    80% {
+      -webkit-transform: translateY(-10px);
+      transform: translateY(-10px);
+    }
+  }
+}
