@@ -1,6 +1,8 @@
+//I am aware about the quality this code. This is my beginning in JS.
+
 const incomeList = document.querySelector("#incomeList");
 const expenseList = document.querySelector("#expenseList");
-const incometName = document.querySelector("#incomeName");
+const incomeName = document.querySelector("#incomeName");
 const incomeValue = document.querySelector("#incomeValue");
 const expenseName = document.querySelector("#expenseName");
 const expenseValue = document.querySelector("#expenseValue");
@@ -8,31 +10,39 @@ const sumIncome = document.querySelector("#sumIncome");
 const sumExpense = document.querySelector("#sumExpense");
 const sumBudget = document.querySelector("#sumBudget");
 
-
+//funkcja reset inputów
+function resetInputs(inputs) {
+  inputs.forEach(i => i.value = "")
+};
 /* funkcja, która określa czy dodajemy income czy expense, aby umieścić w poprawnej kolumnie
-filtrujemy to także na końcu funkcji createElementLi - 
+filtrujemy to także na końcu funkcji createElementLi() - 
+dodatkowo resetInputs() resetyje wartośc input to kliknięciu "DODAJ"
  if (isExpense) {
     expenseList.appendChild(li);
 } else {
   incomeList.appendChild(li);    
 */
 function addIncome() {
- createElementLi(incometName.value, incomeValue.value, false);
-};
+  createElementLi(incomeName.value, incomeValue.value, false);
+  //funkcja reset inputów po kliknięciu
+  resetInputs([incomeName, incomeValue]);
+}
 
 function addExpense() {
   createElementLi(expenseName.value, expenseValue.value, true);
-};
+  //funkcja reset inputów po kliknięciu
+  resetInputs([incomeName, incomeValue]);
+}
 
 
 function createElementLi(name, value, isExpense) {
   const li = document.createElement("li");
   li.classList.add("li");
   const spanName = document.createElement("span");
-  spanName.innerHTML = name;
+  spanName.innerHTML = name + "\xa0";
   const spanAmount = document.createElement("span");
   spanAmount.classList.add("value");
-  spanAmount.innerHTML = value + "zł";
+  spanAmount.innerHTML = value + "\xa0";
   //dataset.amount - wyciąga wartość ze SPAN
   spanAmount.dataset.amount = value;
   li.appendChild(spanName);
@@ -50,12 +60,11 @@ function createElementLi(name, value, isExpense) {
   deleteButton.classList.add("delete");
   deleteButton.addEventListener("click", function () {
     li.remove();
-    spanAmount.dataset.amount = 0;
-  //dzieki hoisting możemu użyć funckji tworzony w kodzie poniżej, w kodzie wyżej 
+       //dzieki hoisting możemu użyć funckji tworzony w kodzie poniżej, w kodzie wyżej
     sumIncomeValue();
     sumExpenseValue();
-    sumBudgetAll()
-   });
+    sumBudgetAll();
+  });
   editButton.addEventListener("click", function () {
     spanName.contentEditable = true;
     spanAmount.contentEditable = true;
@@ -67,16 +76,21 @@ function createElementLi(name, value, isExpense) {
     doneButton.addEventListener("click", function () {
       spanName.contentEditable = false;
       spanAmount.contentEditable = false;
+      //po kliknięciu zaczytuje się nowa wartość zedytowana ze spamAmount po edycji
+      spanAmount.dataset.amount = spanAmount.textContent;
       doneButton.remove();
       editButton.style.visibility = "visible";
+      sumIncomeValue();
+      sumExpenseValue();
+      sumBudgetAll();
     });
   });
   if (isExpense) {
     expenseList.appendChild(li);
-} else {
-  incomeList.appendChild(li);    
-};
-};
+  } else {
+    incomeList.appendChild(li);
+  }
+}
 
 // sumowanie wartości incomes ze span
 function sumIncomeValue() {
@@ -88,10 +102,10 @@ function sumIncomeValue() {
   );
   sumIncome.textContent = sumIn + "zł";
   return sumIn; //return aby funkcja nie była pusta i coś zwracała, jakąś wartość
-};
+}
 // sumowanie wartości expense ze span
 function sumExpenseValue() {
- const sumEx = [...document.querySelectorAll("#expenseList .value")].reduce(
+  const sumEx = [...document.querySelectorAll("#expenseList .value")].reduce(
     (acc, expense) => {
       return acc + Number(expense.dataset.amount);
     },
@@ -104,15 +118,16 @@ function sumExpenseValue() {
 //funkcja odejmująca expenses od incomes i zwracająca ją w DOM
 function sumBudgetAll() {
   const budget = sumIncomeValue() - sumExpenseValue();
-  if(budget > 0) {
-    return sumBudget.textContent = "Możesz jeszcze wydać" + budget + " złotych";
-} else if(budget === 0) {
-    return sumBudget.textContent = "Bilans wynosi zero";
-} else {
-    return sumBudget.textContent = "Bilans jest ujemny. Jesteś na minusie" + budget + " złotych";
-} 
-};
-
+  if (budget > 0) {
+    return (sumBudget.textContent =
+      "Możesz jeszcze wydać: " + budget + " złotych");
+  } else if (budget === 0) {
+    return (sumBudget.textContent = "Bilans wynosi zero");
+  } else {
+    return (sumBudget.textContent =
+      "Bilans jest ujemny. Jesteś na minusie: " + budget + " złotych");
+  }
+}
 
 //przyciski oraz funkcje jakie się dzieją po ich kliknięciu
 document.querySelector("#addP").addEventListener("click", function () {
@@ -126,4 +141,3 @@ document.querySelector("#addW").addEventListener("click", function () {
   sumExpenseValue();
   sumBudgetAll();
 });
-
