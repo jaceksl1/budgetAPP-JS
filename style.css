@@ -62,12 +62,12 @@ body::after {
   box-shadow: 10px 5px 5px black;
 }
 
-.przy-wyd {
+.section {
   display: flex;
   flex-direction: column;
 }
 
-.przychody-head-box {
+.incomes-head-box {
   padding: 1vw;
   font-size: 3vw;
 }
@@ -80,32 +80,32 @@ body::after {
   padding-left: 1vw;
 }
 
-.przychody-box {
+.incomes-box {
   display: flex;
   flex-wrap: wrap;
 }
 
-.przychody-item {
+.incomes-item {
   padding-left: 0.8vw;
   padding-bottom: 1vw;
 }
 
-.wydatki-head-box {
+.expenses-head-box {
   padding: 1vw;
   font-size: 3vw;
 }
 
-.wydatki-box {
+.expenses-box {
   display: flex;
   flex-wrap: wrap;
 }
 
-.wydatki-item {
+.expense-item {
   padding-left: 0.5vw;
   padding-bottom: 1vw;
 }
 
-.produkt {
+.product {
   width: 35vw;
   font-size: 2vw;
   line-height: 2;
@@ -114,7 +114,7 @@ body::after {
   color: white;
 }
 
-.kwota {
+.amount {
   width: 25vw;
   font-size: 2vw;
   line-height: 2;
@@ -126,13 +126,13 @@ body::after {
   line-height: 2;
 }
 
-.przy-obliczenia {
+.incomes-math {
   display: flex;
   flex-direction: row;
   border-bottom: 3px solid;
 }
 
-.wyd-obliczenia {
+.expenses-math {
   display: flex;
   flex-direction: row;
   border-bottom: 3px solid;
@@ -187,32 +187,32 @@ body::after {
 }
 
 @media (min-width: 760px) {
-  .przy-wyd {
+  .section {
   flex-direction: row;
   }
-  .przychody {
+  .incomes {
   width: 50%;
   }
-  .wydatki {
+  .expenses {
   width: 50%;
   }
-  .produkt {
+  .product {
     width: 36vw;
   }
-  .kwota {
+  .amount {
     width: 25vmin;
   }
-  .przychody-head-box {
+  .incomes-head-box {
   border-right: 3px solid;
 }
-  .przychody-box {
+  .incomes-box {
   border-right: 3px solid;
   border-bottom: 3px solid;
 }
-  .wydatki-head-box {
+  .expenses-head-box {
   border-left: 3px solid;
 }
-  .wydatki-box {
+  .expenses-box {
   border-left: 3px solid;
   border-bottom: 3px solid;
 }
@@ -223,19 +223,19 @@ body {
   width: 100vw;
   padding: 0 15vw;
 }
-  .wydatki-head-box {
+  .expenses-head-box {
     padding: 1vw;
     font-size: 2vw;
   }
-  .przychody-head-box {
+  .incomes-head-box {
     padding: 1vw;
     font-size: 2vw;
   }
-  .produkt {
+  .product {
     width: 250px;
     font-size: 1.5vw;
   }
-  .kwota {
+  .amount {
     width: 200px;
     font-size: 1.5vw;
   }
