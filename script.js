@@ -12,8 +12,8 @@ const sumBudget = document.querySelector("#sumBudget");
 
 //funkcja reset inputów
 function resetInputs(inputs) {
-  inputs.forEach((i) => (i.value = ""));
-}
+  inputs.forEach(i => i.value = "")
+};
 /* funkcja, która określa czy dodajemy income czy expense, aby umieścić w poprawnej kolumnie
 filtrujemy to także na końcu funkcji createElementLi() - 
 dodatkowo resetInputs() resetyje wartośc input to kliknięciu "DODAJ"
@@ -31,8 +31,9 @@ function addIncome() {
 function addExpense() {
   createElementLi(expenseName.value, expenseValue.value, true);
   //funkcja reset inputów po kliknięciu
-  resetInputs([incomeName, incomeValue]);
+  resetInputs([expenseName, expenseValue]);
 }
+
 
 function createElementLi(name, value, isExpense) {
   const li = document.createElement("li");
@@ -59,7 +60,7 @@ function createElementLi(name, value, isExpense) {
   deleteButton.classList.add("delete");
   deleteButton.addEventListener("click", function () {
     li.remove();
-    //dzieki hoisting możemu użyć funckji tworzony w kodzie poniżej, w kodzie wyżej
+       //dzieki hoisting możemu użyć funckji tworzony w kodzie poniżej, w kodzie wyżej
     sumIncomeValue();
     sumExpenseValue();
     sumBudgetAll();
@@ -89,7 +90,8 @@ function createElementLi(name, value, isExpense) {
   } else {
     incomeList.appendChild(li);
   }
-}
+};
+
 
 // sumowanie wartości incomes ze span
 function sumIncomeValue() {
@@ -129,14 +131,24 @@ function sumBudgetAll() {
 }
 
 //przyciski oraz funkcje jakie się dzieją po ich kliknięciu
+//jeżeli value inputów jest różne od 0 to dodaj uruchom funkcje
 document.querySelector("#addP").addEventListener("click", function () {
+ if(incomeValue.value.length !== 0 || incomeName.value.length !== 0) {
   addIncome();
   sumIncomeValue();
   sumBudgetAll();
+ } else { 
+  resetInputs([incomeName, incomeValue]);
+ }
 });
-
+//przyciski oraz funkcje jakie się dzieją po ich kliknięciu
+//jeżeli value inputów jest różne od 0 to dodaj uruchom funkcje
 document.querySelector("#addW").addEventListener("click", function () {
+  if(expenseValue.value.length !== 0 || expenseName.value.length !== 0) {
   addExpense();
   sumExpenseValue();
   sumBudgetAll();
+     } else { 
+  resetInputs([expenseName, expenseValue]);
+ }
 });
